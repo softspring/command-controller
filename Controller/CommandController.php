@@ -2,7 +2,7 @@
 
 namespace Softspring\CommandController\Controller;
 
-use Softspring\CommandController\Utils\StreamedCommandRunner;
+use Softspring\CommandController\Runner\StreamedCommandRunner;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\StreamedResponse;

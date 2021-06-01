@@ -1,6 +1,6 @@
 <?php
 
-namespace Softspring\CommandController\Utils;
+namespace Softspring\CommandController\Output;
 
 use Symfony\Component\Console\Output\StreamOutput;
 

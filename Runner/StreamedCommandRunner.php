@@ -1,13 +1,15 @@
 <?php
 
-namespace Softspring\CommandController\Utils;
+namespace Softspring\CommandController\Runner;
 
 use App\Kernel;
 use Psr\Log\LoggerInterface;
+use Softspring\CommandController\Output\LoggerCommandOutput;
+use Softspring\CommandController\Output\StreamedCommandOutput;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\ErrorReporting\Debug;
+use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class StreamedCommandRunner

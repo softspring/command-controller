@@ -1,6 +1,6 @@
 <?php
 
-namespace Softspring\CommandController\Utils;
+namespace Softspring\CommandController\Output;
 
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Formatter\OutputFormatterInterface;
