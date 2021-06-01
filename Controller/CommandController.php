@@ -21,6 +21,12 @@ class CommandController extends AbstractController
 
         $commandConfig = array_merge([$command], $options, $arguments);
 
-        return StreamedCommandRunner::createRunCommandStreamedResponse($commandConfig)->send();
+        $commandOptions = [];
+
+        if ($loggerOutputService = $request->attributes->get('loggerOutputService')) {
+            $commandOptions['outputLogger'] = $this->get($loggerOutputService);
+        }
+
+        return StreamedCommandRunner::createRunCommandStreamedResponse($commandConfig, $commandOptions)->send();
     }
 }
