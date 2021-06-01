@@ -5,3 +5,5 @@ php:
   - 7.4
 
 install: composer update --prefer-dist --no-interaction
+
+script: composer validate
