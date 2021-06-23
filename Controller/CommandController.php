@@ -2,14 +2,24 @@
 
 namespace Softspring\CommandController\Controller;
 
+use Softspring\CommandController\Runner\CommandRunner;
 use Softspring\CommandController\Runner\StreamedCommandRunner;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class CommandController extends AbstractController
 {
-    public function run(string $command, Request $request, array $arguments = [], array $options = []): StreamedResponse
+    /**
+     * @param string  $command
+     * @param Request $request
+     * @param array   $arguments
+     * @param array   $options
+     *
+     * @return Response|StreamedResponse
+     */
+    public function run(string $command, Request $request, array $arguments = [], array $options = []): Response
     {
         $options = array_filter($request->attributes->all(), function ($key) use ($options) { return in_array($key, $options); }, ARRAY_FILTER_USE_KEY);
         $arguments = array_filter($request->attributes->all(), function ($key) use ($arguments) { return in_array($key, $arguments); }, ARRAY_FILTER_USE_KEY);
@@ -27,6 +37,12 @@ class CommandController extends AbstractController
             $commandOptions['outputLogger'] = $this->get($loggerOutputService);
         }
 
-        return StreamedCommandRunner::createRunCommandStreamedResponse($commandConfig, $commandOptions)->send();
+        $stream = (bool) $request->attributes->get('stream', true);
+
+        if ($stream) {
+            return StreamedCommandRunner::createRunCommandStreamedResponse($commandConfig, $commandOptions)->send();
+        } else {
+            return CommandRunner::createRunCommandResponse($commandConfig, $commandOptions);
+        }
     }
 }

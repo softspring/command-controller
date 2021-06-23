@@ -124,6 +124,18 @@ you will get this output in configured log:
 [01-Jan-2000 00:00:00] [pool cron] 0 emails sent"
 ```
 
+Command runner controller returns a StreamedResponse, but if you want to return a normal response you can do it with *stream* option.
+
+```yaml
+# config/routes/commands.yaml
+cron_send_emails:
+    controller: Softspring\CommandController\Controller\CommandController::run
+    path: /_cron/send-emails
+    defaults:
+        command: swiftmailer:spool:send
+        stream: false
+```
+
 ### Security
 
 Important! Above configurations will make public the commands you configure, and could be a security hole in your system.
