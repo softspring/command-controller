@@ -25,6 +25,14 @@ class CommandController extends AbstractController
         $arguments = array_filter($request->attributes->all(), function ($key) use ($arguments) { return in_array($key, $arguments); }, ARRAY_FILTER_USE_KEY);
 
         foreach ($options as $key => $value) {
+            if (is_object($value)) {
+                if (isset($request->attributes->get('_route_params')[$key]) && !is_object($request->attributes->get('_route_params')[$key])) {
+                    $value = $request->attributes->get('_route_params')[$key];
+                } elseif ($request->query->has($key) && !is_object($request->query->get($key))) {
+                    $value = $request->query->get($key);
+                }
+            }
+
             $options["--$key"] = $value;
             unset($options[$key]);
         }
