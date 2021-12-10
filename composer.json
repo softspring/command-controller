@@ -3,7 +3,7 @@
     "description": "This library allows running commands from Symfony controllers.",
     "license": "MIT",
     "require": {
-        "php": "^7.3"
+        "php": "^7.4"
     },
     "require-dev": {
         "symfony/console": "^4.0 || ^5.0",
