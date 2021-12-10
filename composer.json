@@ -13,15 +13,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Softspring\\CommandController\\": ""
-        },
-        "exclude-from-classmap": [
-            "/Tests/"
-        ]
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Softspring\\CommandController\\Tests\\": "/Tests/"
+            "Softspring\\CommandController\\": "src"
         }
     },
     "conflict": {
