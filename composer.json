@@ -1,7 +1,9 @@
 {
     "name": "softspring/command-controller",
     "description": "This library allows running commands from Symfony controllers.",
+    "type": "library",
     "license": "MIT",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=7.4"
     },
