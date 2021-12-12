@@ -12,11 +12,6 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 class CommandController extends AbstractController
 {
     /**
-     * @param string  $command
-     * @param Request $request
-     * @param array   $arguments
-     * @param array   $options
-     *
      * @return Response|StreamedResponse
      */
     public function run(string $command, Request $request, array $arguments = [], array $options = []): Response

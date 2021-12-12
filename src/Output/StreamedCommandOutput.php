@@ -6,7 +6,7 @@ use Symfony\Component\Console\Output\StreamOutput;
 
 class StreamedCommandOutput extends StreamOutput
 {
-    protected function doWrite($message, $newline)
+    protected function doWrite(string $message, bool $newline): void
     {
         ob_start();
         if (
@@ -19,7 +19,7 @@ class StreamedCommandOutput extends StreamOutput
             throw new \RuntimeException('Unable to write output.');
         }
 
-        echo $message.($newline?"\n":'');
+        echo $message.($newline ? "\n" : '');
 
         ob_flush();
         flush();

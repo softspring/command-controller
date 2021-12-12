@@ -8,10 +8,7 @@ use Symfony\Component\Console\Output\Output;
 
 class LoggerCommandOutput extends Output
 {
-    /**
-     * @var LoggerInterface
-     */
-    protected $logger;
+    protected LoggerInterface $logger;
 
     public function __construct(LoggerInterface $logger, ?int $verbosity = self::VERBOSITY_NORMAL, bool $decorated = false, OutputFormatterInterface $formatter = null)
     {
@@ -19,12 +16,9 @@ class LoggerCommandOutput extends Output
         $this->logger = $logger;
     }
 
-    /**
-     * @var string
-     */
-    protected $accumulatedMessage = '';
+    protected string $accumulatedMessage = '';
 
-    protected function doWrite($message, $newline)
+    protected function doWrite(string $message, bool $newline): void
     {
         $this->accumulatedMessage .= $message;
 

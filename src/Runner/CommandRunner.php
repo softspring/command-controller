@@ -5,12 +5,10 @@ namespace Softspring\CommandController\Runner;
 use App\Kernel;
 use Psr\Log\LoggerInterface;
 use Softspring\CommandController\Output\LoggerCommandOutput;
-use Softspring\CommandController\Output\StreamedCommandOutput;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\BufferedOutput;
-use Symfony\Component\Console\Output\StreamOutput;
 use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -46,7 +44,7 @@ class CommandRunner extends StreamedCommandRunner
             }
         }
 
-        if ($options['outputLogger']??false) {
+        if ($options['outputLogger'] ?? false) {
             /** @var LoggerInterface $outputLogger */
             $outputLogger = $options['outputLogger'];
             $output = new LoggerCommandOutput($outputLogger);

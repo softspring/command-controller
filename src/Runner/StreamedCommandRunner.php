@@ -16,7 +16,7 @@ class StreamedCommandRunner
 {
     public static function createRunCommandStreamedResponse(array $command, array $options = []): StreamedResponse
     {
-        return new StreamedResponse(function() use ($command, $options) {
+        return new StreamedResponse(function () use ($command, $options) {
             try {
                 self::_doRunCommand(new ArrayInput($command), $options);
             } catch (\Exception $e) {
@@ -35,25 +35,21 @@ class StreamedCommandRunner
 
     /**
      * @param array[] $commands
-     * @param array   $options
-     *
-     * @return StreamedResponse
      */
     public static function createRunCommandsStreamedResponse(array $commands, array $options = []): StreamedResponse
     {
-        return new StreamedResponse(function() use ($commands) {
+        return new StreamedResponse(function () use ($commands) {
             foreach ($commands as $command) {
                 self::_doRunCommand(new ArrayInput($command));
             }
         }, 200, [
             'Content-Type' => 'text/plain',
             'X-Accel-Buffering' => 'no',
-        ]);;
+        ]);
     }
 
     /**
      * @param array[] $commands
-     * @param array   $options
      */
     public static function runCommands(array $commands, array $options = [])
     {
@@ -75,7 +71,7 @@ class StreamedCommandRunner
             }
         }
 
-        if ($options['outputLogger']??false) {
+        if ($options['outputLogger'] ?? false) {
             /** @var LoggerInterface $outputLogger */
             $outputLogger = $options['outputLogger'];
             $output = new LoggerCommandOutput($outputLogger);
