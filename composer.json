@@ -22,8 +22,5 @@
         "symfony/framework-bundle": ">= 4.0.0 < 4.1.12"
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "4.0-dev"
-        }
     }
 }
