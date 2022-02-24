@@ -4,13 +4,16 @@ namespace Softspring\CommandController\Controller;
 
 use Softspring\CommandController\Runner\CommandRunner;
 use Softspring\CommandController\Runner\StreamedCommandRunner;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
-class CommandController extends AbstractController
+class CommandController implements ContainerAwareInterface
 {
+    use ContainerAwareTrait;
+
     /**
      * @return Response|StreamedResponse
      */
@@ -37,7 +40,7 @@ class CommandController extends AbstractController
         $commandOptions = [];
 
         if ($loggerOutputService = $request->attributes->get('loggerOutputService')) {
-            $commandOptions['outputLogger'] = $this->get($loggerOutputService);
+            $commandOptions['outputLogger'] = $this->container->get($loggerOutputService);
         }
 
         $stream = (bool) $request->attributes->get('stream', true);
