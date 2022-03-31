@@ -4,7 +4,7 @@
 [![Latest Unstable Version](https://poser.pugx.org/softspring/command-controller/v/unstable.svg)](https://packagist.org/packages/softspring/command-controller)
 [![License](https://poser.pugx.org/softspring/command-controller/license.svg)](https://packagist.org/packages/softspring/command-controller)
 [![Total Downloads](https://poser.pugx.org/softspring/command-controller/downloads)](https://packagist.org/packages/softspring/command-controller)
-[![Build status](https://travis-ci.com/softspring/command-controller.svg?branch=master)](https://app.travis-ci.com/github/softspring/command-controller)
+[![Build status](https://github.com/softspring/command-controller/actions/workflows/php.yml)](https://github.com/softspring/command-controller/actions/workflows/php.yml/badge.svg?branch=5.0)
 
 This library allows running commands from Symfony controllers.
 
