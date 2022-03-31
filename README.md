@@ -10,7 +10,7 @@ This library allows running commands from Symfony controllers.
 
 ## Documentation
 
-* [1. Installation](docs/1_installation.md)
+- [1. Installation](docs/1_installation.md)
 - [2. Basic usage](docs/2_basic_usage.md)
 - [3. Command with arguments](docs/3_command_with_arguments.md)
 - [4. Command with options](docs/4_use_options.md)
