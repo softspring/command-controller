@@ -19,8 +19,8 @@ class CommandController implements ContainerAwareInterface
      */
     public function run(string $command, Request $request, array $arguments = [], array $options = []): Response
     {
-        $options = array_filter($request->attributes->all()+$request->query->all(), function ($key) use ($options) { return in_array($key, $options); }, ARRAY_FILTER_USE_KEY);
-        $arguments = array_filter($request->attributes->all()+$request->query->all(), function ($key) use ($arguments) { return in_array($key, $arguments); }, ARRAY_FILTER_USE_KEY);
+        $options = array_filter($request->attributes->all() + $request->query->all(), function ($key) use ($options) { return in_array($key, $options); }, ARRAY_FILTER_USE_KEY);
+        $arguments = array_filter($request->attributes->all() + $request->query->all(), function ($key) use ($arguments) { return in_array($key, $arguments); }, ARRAY_FILTER_USE_KEY);
 
         foreach ($options as $key => $value) {
             if (is_object($value)) {
