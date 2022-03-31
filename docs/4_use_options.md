@@ -14,4 +14,4 @@ create_reports:
         options: ["dry-run"]
 ```
 
-This route will run as $ bin/console app:report:create --dry-run
+This route will run as *$ bin/console app:report:create --dry-run*
