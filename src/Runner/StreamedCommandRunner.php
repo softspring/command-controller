@@ -1,11 +1,11 @@
 <?php
 
-namespace Softspring\CommandController\Runner;
+namespace Softspring\Component\CommandController\Runner;
 
 use App\Kernel;
 use Psr\Log\LoggerInterface;
-use Softspring\CommandController\Output\LoggerCommandOutput;
-use Softspring\CommandController\Output\StreamedCommandOutput;
+use Softspring\Component\CommandController\Output\LoggerCommandOutput;
+use Softspring\Component\CommandController\Output\StreamedCommandOutput;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;

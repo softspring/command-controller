@@ -27,7 +27,7 @@ A basic command will be like this:
 ```yaml
 # config/routes/commands.yaml
 command_cache_clear:
-    controller: Softspring\CommandController\Controller\CommandController::run
+    controller: Softspring\Component\CommandController\Controller\CommandController::run
     path: /_command/cache-clear
     defaults:
         command: cache:clear
@@ -43,7 +43,7 @@ If you need to pass arguments, you must add an arguments array in route defaults
 ```yaml
 # config/routes/commands.yaml
 create_reports:
-    controller: Softspring\CommandController\Controller\CommandController::run
+    controller: Softspring\Component\CommandController\Controller\CommandController::run
     path: /_command/create-report
     defaults:
         command: app:report:create
@@ -58,7 +58,7 @@ You can also set arguments in route paths:
 ```yaml
 # config/routes/commands.yaml
 send_welcome_email:
-    controller: Softspring\CommandController\Controller\CommandController::run
+    controller: Softspring\Component\CommandController\Controller\CommandController::run
     path: /_command/emails/welcome/{to}/send
     defaults:
         command: app:emails:send-welcome
@@ -75,7 +75,7 @@ set witch options are allowed to pass to the command
 ```yaml
 # config/routes/commands.yaml
 create_reports:
-    controller: Softspring\CommandController\Controller\CommandController::run
+    controller: Softspring\Component\CommandController\Controller\CommandController::run
     path: /_command/create-report
     defaults:
         command: app:report:create
@@ -92,7 +92,7 @@ By default, you will get the output in http response body.
 ```yaml
 # config/routes/commands.yaml
 cron_send_emails:
-    controller: Softspring\CommandController\Controller\CommandController::run
+    controller: Softspring\Component\CommandController\Controller\CommandController::run
     path: /_cron/send-emails
     defaults:
         command: swiftmailer:spool:send
@@ -110,7 +110,7 @@ You can also set a logger to be the output of the command.
 ```yaml
 # config/routes/commands.yaml
 cron_send_emails:
-    controller: Softspring\CommandController\Controller\CommandController::run
+    controller: Softspring\Component\CommandController\Controller\CommandController::run
     path: /_cron/send-emails
     defaults:
         command: swiftmailer:spool:send
@@ -129,7 +129,7 @@ Command runner controller returns a StreamedResponse, but if you want to return 
 ```yaml
 # config/routes/commands.yaml
 cron_send_emails:
-    controller: Softspring\CommandController\Controller\CommandController::run
+    controller: Softspring\Component\CommandController\Controller\CommandController::run
     path: /_cron/send-emails
     defaults:
         command: swiftmailer:spool:send

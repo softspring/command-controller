@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Softspring\\CommandController\\": "src"
+            "Softspring\\Component\\CommandController\\": "src"
         }
     },
     "conflict": {

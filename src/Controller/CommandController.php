@@ -1,9 +1,9 @@
 <?php
 
-namespace Softspring\CommandController\Controller;
+namespace Softspring\Component\CommandController\Controller;
 
-use Softspring\CommandController\Runner\CommandRunner;
-use Softspring\CommandController\Runner\StreamedCommandRunner;
+use Softspring\Component\CommandController\Runner\CommandRunner;
+use Softspring\Component\CommandController\Runner\StreamedCommandRunner;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\HttpFoundation\Request;
