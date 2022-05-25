@@ -22,10 +22,10 @@ class StreamedCommandRunner
             } catch (\Exception $e) {
                 throw $e;
             }
-        }, 200, [
-            'Content-Type' => 'text/plain',
-            'X-Accel-Buffering' => 'no',
-        ]);
+            }, 200, [
+                'Content-Type' => 'text/plain',
+                'X-Accel-Buffering' => 'no',
+            ]);
     }
 
     public static function runCommand(array $command, array $options = []): void
@@ -42,10 +42,10 @@ class StreamedCommandRunner
             foreach ($commands as $command) {
                 self::_doRunCommand(new ArrayInput($command));
             }
-        }, 200, [
-            'Content-Type' => 'text/plain',
-            'X-Accel-Buffering' => 'no',
-        ]);
+            }, 200, [
+                'Content-Type' => 'text/plain',
+                'X-Accel-Buffering' => 'no',
+            ]);
     }
 
     /**
