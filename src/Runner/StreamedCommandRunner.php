@@ -23,9 +23,9 @@ class StreamedCommandRunner
                 throw $e;
             }
             }, 200, [
-                    'Content-Type' => 'text/plain',
-                    'X-Accel-Buffering' => 'no',
-                ]);
+                        'Content-Type' => 'text/plain',
+                        'X-Accel-Buffering' => 'no',
+                    ]);
     }
 
     public static function runCommand(array $command, array $options = []): void
@@ -38,14 +38,16 @@ class StreamedCommandRunner
      */
     public static function createRunCommandsStreamedResponse(array $commands, array $options = []): StreamedResponse
     {
+        $headers = [
+            'Content-Type' => 'text/plain',
+            'X-Accel-Buffering' => 'no',
+        ];
+
         return new StreamedResponse(function () use ($commands) {
             foreach ($commands as $command) {
                 self::_doRunCommand(new ArrayInput($command));
             }
-            }, 200, [
-                    'Content-Type' => 'text/plain',
-                    'X-Accel-Buffering' => 'no',
-                ]);
+        }, 200, $headers);
     }
 
     /**
