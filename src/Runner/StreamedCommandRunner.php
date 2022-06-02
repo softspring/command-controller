@@ -16,16 +16,18 @@ class StreamedCommandRunner
 {
     public static function createRunCommandStreamedResponse(array $command, array $options = []): StreamedResponse
     {
+        $headers = [
+            'Content-Type' => 'text/plain',
+            'X-Accel-Buffering' => 'no',
+        ];
+
         return new StreamedResponse(function () use ($command, $options) {
             try {
                 self::_doRunCommand(new ArrayInput($command), $options);
             } catch (\Exception $e) {
                 throw $e;
             }
-            }, 200, [
-                        'Content-Type' => 'text/plain',
-                        'X-Accel-Buffering' => 'no',
-                    ]);
+        }, 200, $headers);
     }
 
     public static function runCommand(array $command, array $options = []): void
