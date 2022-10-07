@@ -1,8 +1,9 @@
-# CommandController
+# Command Controller component
 
 [![Latest Stable Version](https://poser.pugx.org/softspring/command-controller/v/stable.svg)](https://packagist.org/packages/softspring/command-controller)
 [![Latest Unstable Version](https://poser.pugx.org/softspring/command-controller/v/unstable.svg)](https://packagist.org/packages/softspring/command-controller)
 [![License](https://poser.pugx.org/softspring/command-controller/license.svg)](https://packagist.org/packages/softspring/command-controller)
+[![PHP Version Require](http://poser.pugx.org/softspring/command-controller/require/php)](https://packagist.org/packages/softspring/command-controller)
 [![Total Downloads](https://poser.pugx.org/softspring/command-controller/downloads)](https://packagist.org/packages/softspring/command-controller)
 [![Build status](https://github.com/softspring/command-controller/actions/workflows/php.yml/badge.svg?branch=5.0)](https://github.com/softspring/command-controller/actions/workflows/php.yml)
 
