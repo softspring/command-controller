@@ -8,15 +8,11 @@ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class CommandController implements ContainerAwareInterface
 {
     use ContainerAwareTrait;
 
-    /**
-     * @return Response|StreamedResponse
-     */
     public function run(string $command, Request $request, array $arguments = [], array $options = []): Response
     {
         $options = array_filter($request->attributes->all() + $request->query->all(), function ($key) use ($options) { return in_array($key, $options); }, ARRAY_FILTER_USE_KEY);
