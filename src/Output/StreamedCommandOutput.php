@@ -10,10 +10,10 @@ class StreamedCommandOutput extends StreamOutput
     {
         ob_start();
         if (
-            false === @fwrite($this->getStream(), $message) ||
-            (
-                $newline &&
-                (false === @fwrite($this->getStream(), PHP_EOL))
+            false === @fwrite($this->getStream(), $message)
+            || (
+                $newline
+                && (false === @fwrite($this->getStream(), PHP_EOL))
             )
         ) {
             throw new \RuntimeException('Unable to write output.');
