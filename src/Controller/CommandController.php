@@ -4,14 +4,15 @@ namespace Softspring\Component\CommandController\Controller;
 
 use Softspring\Component\CommandController\Runner\CommandRunner;
 use Softspring\Component\CommandController\Runner\StreamedCommandRunner;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class CommandController implements ContainerAwareInterface
+class CommandController
 {
-    use ContainerAwareTrait;
+    public function __construct(protected ?ContainerInterface $container = null)
+    {
+    }
 
     public function run(string $command, Request $request, array $arguments = [], array $options = []): Response
     {
@@ -22,7 +23,7 @@ class CommandController implements ContainerAwareInterface
             if (is_object($value)) {
                 if (isset($request->attributes->get('_route_params')[$key]) && !is_object($request->attributes->get('_route_params')[$key])) {
                     $value = $request->attributes->get('_route_params')[$key];
-                } elseif ($request->query->has($key) && !is_object($request->query->get($key))) {
+                } elseif ($request->query->has($key)) {
                     $value = $request->query->get($key);
                 }
             }
@@ -36,6 +37,10 @@ class CommandController implements ContainerAwareInterface
         $commandOptions = [];
 
         if ($loggerOutputService = $request->attributes->get('loggerOutputService')) {
+            if (!$this->container) {
+                throw new \LogicException('To use loggerOutputService you must configure controller as service and inject the container in the controller constructor');
+            }
+
             $commandOptions['outputLogger'] = $this->container->get($loggerOutputService);
         }
 
