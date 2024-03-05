@@ -10,7 +10,7 @@ class LoggerCommandOutput extends Output
 {
     protected LoggerInterface $logger;
 
-    public function __construct(LoggerInterface $logger, ?int $verbosity = self::VERBOSITY_NORMAL, bool $decorated = false, OutputFormatterInterface $formatter = null)
+    public function __construct(LoggerInterface $logger, ?int $verbosity = self::VERBOSITY_NORMAL, bool $decorated = false, ?OutputFormatterInterface $formatter = null)
     {
         parent::__construct($verbosity, $decorated, $formatter);
         $this->logger = $logger;
