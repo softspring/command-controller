@@ -4,3 +4,4 @@ parameters:
 			message: '#^Call to function is_object\(\) with bool\|float\|int\|string\|null will always evaluate to false\.$#'
 			count: 1
 			path: src/Controller/CommandController.php
+			reportUnmatched: false # ignore error on newer-versions
