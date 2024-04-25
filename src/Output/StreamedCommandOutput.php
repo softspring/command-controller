@@ -2,6 +2,7 @@
 
 namespace Softspring\Component\CommandController\Output;
 
+use RuntimeException;
 use Symfony\Component\Console\Output\StreamOutput;
 
 class StreamedCommandOutput extends StreamOutput
@@ -16,7 +17,7 @@ class StreamedCommandOutput extends StreamOutput
                 && (false === @fwrite($this->getStream(), PHP_EOL))
             )
         ) {
-            throw new \RuntimeException('Unable to write output.');
+            throw new RuntimeException('Unable to write output.');
         }
 
         echo $message.($newline ? "\n" : '');

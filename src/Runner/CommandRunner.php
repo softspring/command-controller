@@ -3,6 +3,7 @@
 namespace Softspring\Component\CommandController\Runner;
 
 use App\Kernel;
+use Exception;
 use Psr\Log\LoggerInterface;
 use Softspring\Component\CommandController\Output\LoggerCommandOutput;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
@@ -23,7 +24,7 @@ class CommandRunner extends StreamedCommandRunner
             return new Response($content, $exitCode ? 500 : 200, [
                 'Content-Type' => 'text/plain',
             ]);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return new Response('Error running command', 500, [
                 'Content-Type' => 'text/plain',
             ]);

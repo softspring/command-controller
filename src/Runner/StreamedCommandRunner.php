@@ -3,6 +3,7 @@
 namespace Softspring\Component\CommandController\Runner;
 
 use App\Kernel;
+use Exception;
 use Psr\Log\LoggerInterface;
 use Softspring\Component\CommandController\Output\LoggerCommandOutput;
 use Softspring\Component\CommandController\Output\StreamedCommandOutput;
@@ -25,7 +26,7 @@ class StreamedCommandRunner
         return new StreamedResponse(function () use ($command, $options) {
             try {
                 self::_doRunCommand(new ArrayInput($command), $options);
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 throw $e;
             }
         }, 200, $headers);

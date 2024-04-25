@@ -2,6 +2,7 @@
 
 namespace Softspring\Component\CommandController\Controller;
 
+use LogicException;
 use Softspring\Component\CommandController\Runner\CommandRunner;
 use Softspring\Component\CommandController\Runner\StreamedCommandRunner;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -38,7 +39,7 @@ class CommandController
 
         if ($loggerOutputService = $request->attributes->get('loggerOutputService')) {
             if (!$this->container) {
-                throw new \LogicException('To use loggerOutputService you must configure controller as service and inject the container in the controller constructor');
+                throw new LogicException('To use loggerOutputService you must configure controller as service and inject the container in the controller constructor');
             }
 
             $commandOptions['outputLogger'] = $this->container->get($loggerOutputService);
