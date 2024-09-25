@@ -1,11 +1,11 @@
 # Command Controller component
 
-[![Latest Stable Version](https://poser.pugx.org/softspring/command-controller/v/stable.svg)](https://packagist.org/packages/softspring/command-controller)
-[![Latest Unstable Version](https://poser.pugx.org/softspring/command-controller/v/unstable.svg)](https://packagist.org/packages/softspring/command-controller)
-[![License](https://poser.pugx.org/softspring/command-controller/license.svg)](https://packagist.org/packages/softspring/command-controller)
-[![PHP Version Require](http://poser.pugx.org/softspring/command-controller/require/php)](https://packagist.org/packages/softspring/command-controller)
-[![Total Downloads](https://poser.pugx.org/softspring/command-controller/downloads)](https://packagist.org/packages/softspring/command-controller)
-[![Build status](https://github.com/softspring/command-controller/actions/workflows/php.yml/badge.svg?branch=5.3)](https://github.com/softspring/command-controller/actions/workflows/php.yml)
+![Latest Stable](https://img.shields.io/packagist/v/softspring/command-controller?label=stable&style=flat-square)
+![Latest Unstable](https://img.shields.io/packagist/v/softspring/command-controller?label=unstable&style=flat-square&include_prereleases)
+![License](https://img.shields.io/packagist/l/softspring/command-controller?style=flat-square)
+![PHP Version](https://img.shields.io/packagist/dependency-v/softspring/command-controller/php?style=flat-square)
+![Downloads](https://img.shields.io/packagist/dt/softspring/command-controller?style=flat-square)
+[![CI](https://img.shields.io/github/actions/workflow/status/softspring/command-controller/php.yml?branch=5.3&style=flat-square&label=CI)](https://github.com/softspring/command-controller/actions/workflows/php.yml)
 
 This library allows running commands from Symfony controllers.
 
