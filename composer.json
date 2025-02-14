@@ -2,7 +2,7 @@
     "name": "softspring/command-controller",
     "description": "This library allows running commands from Symfony controllers.",
     "type": "library",
-    "license": "AGPL-3.0",
+    "license": "AGPL-3.0-or-later",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
