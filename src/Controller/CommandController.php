@@ -20,7 +20,7 @@ class CommandController
         trigger_deprecation(
             'softspring/command-controller',
             '5.4',
-            'The "%s::run" method is deprecated since version 5.4 and will be removed in 6.0. Use "%s" instead.',
+            'The "%s::run" method is deprecated since version 5.5 and will be removed in 6.0. Use "%s" instead.',
             __CLASS__,
             self::class
         );
