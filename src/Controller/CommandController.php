@@ -17,6 +17,19 @@ class CommandController
 
     public function run(string $command, Request $request, array $arguments = [], array $options = []): Response
     {
+        trigger_deprecation(
+            'softspring/command-controller',
+            '5.4',
+            'The "%s::run" method is deprecated since version 5.5 and will be removed in 6.0. Use "%s" instead.',
+            __CLASS__,
+            self::class
+        );
+
+        return $this->__invoke($command, $request, $arguments, $options);
+    }
+
+    public function __invoke(string $command, Request $request, array $arguments = [], array $options = []): Response
+    {
         $options = array_filter($request->attributes->all() + $request->query->all(), function ($key) use ($options) { return in_array($key, $options); }, ARRAY_FILTER_USE_KEY);
         $arguments = array_filter($request->attributes->all() + $request->query->all(), function ($key) use ($arguments) { return in_array($key, $arguments); }, ARRAY_FILTER_USE_KEY);
 
