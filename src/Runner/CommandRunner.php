@@ -55,6 +55,7 @@ class CommandRunner extends StreamedCommandRunner
         }
 
         /** @var KernelInterface $kernel */
+        /** @phpstan-ignore-next-line  */
         $kernel = new Kernel($env, $debug);
         $application = new Application($kernel);
         $application->setAutoExit(false);

@@ -3,7 +3,6 @@
 namespace Softspring\Component\CommandController\Runner;
 
 use App\Kernel;
-use Exception;
 use Psr\Log\LoggerInterface;
 use Softspring\Component\CommandController\Output\LoggerCommandOutput;
 use Softspring\Component\CommandController\Output\StreamedCommandOutput;
@@ -23,12 +22,8 @@ class StreamedCommandRunner
             'X-Accel-Buffering' => 'no',
         ];
 
-        return new StreamedResponse(function () use ($command, $options) {
-            try {
-                self::_doRunCommand(new ArrayInput($command), $options);
-            } catch (Exception $e) {
-                throw $e;
-            }
+        return new StreamedResponse(function () use ($command, $options): void {
+            self::_doRunCommand(new ArrayInput($command), $options);
         }, 200, $headers);
     }
 
@@ -47,7 +42,7 @@ class StreamedCommandRunner
             'X-Accel-Buffering' => 'no',
         ];
 
-        return new StreamedResponse(function () use ($commands) {
+        return new StreamedResponse(function () use ($commands): void {
             foreach ($commands as $command) {
                 self::_doRunCommand(new ArrayInput($command));
             }
@@ -57,12 +52,12 @@ class StreamedCommandRunner
     /**
      * @param array[] $commands
      */
-    public static function runCommands(array $commands, array $options = [])
+    public static function runCommands(array $commands, array $options = []): void
     {
         self::createRunCommandsStreamedResponse($commands, $options)->send();
     }
 
-    private static function _doRunCommand(InputInterface $input, array $options = [])
+    private static function _doRunCommand(InputInterface $input, array $options = []): void
     {
         $input->setInteractive(false);
 
@@ -86,6 +81,7 @@ class StreamedCommandRunner
         }
 
         /** @var KernelInterface $kernel */
+        /** @phpstan-ignore-next-line  */
         $kernel = new Kernel($env, $debug);
         $application = new Application($kernel);
         $application->setAutoExit(false);

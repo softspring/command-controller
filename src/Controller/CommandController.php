@@ -30,8 +30,8 @@ class CommandController
 
     public function __invoke(string $command, Request $request, array $arguments = [], array $options = []): Response
     {
-        $options = array_filter($request->attributes->all() + $request->query->all(), function ($key) use ($options) { return in_array($key, $options); }, ARRAY_FILTER_USE_KEY);
-        $arguments = array_filter($request->attributes->all() + $request->query->all(), function ($key) use ($arguments) { return in_array($key, $arguments); }, ARRAY_FILTER_USE_KEY);
+        $options = array_filter($request->attributes->all() + $request->query->all(), function ($key) use ($options): bool { return in_array($key, $options); }, ARRAY_FILTER_USE_KEY);
+        $arguments = array_filter($request->attributes->all() + $request->query->all(), function ($key) use ($arguments): bool { return in_array($key, $arguments); }, ARRAY_FILTER_USE_KEY);
 
         foreach ($options as $key => $value) {
             if (is_object($value)) {
@@ -51,7 +51,7 @@ class CommandController
         $commandOptions = [];
 
         if ($loggerOutputService = $request->attributes->get('loggerOutputService')) {
-            if (!$this->container) {
+            if (!$this->container instanceof ContainerInterface) {
                 throw new LogicException('To use loggerOutputService you must configure controller as service and inject the container in the controller constructor');
             }
 
@@ -62,8 +62,8 @@ class CommandController
 
         if ($stream) {
             return StreamedCommandRunner::createRunCommandStreamedResponse($commandConfig, $commandOptions)->send();
-        } else {
-            return CommandRunner::createRunCommandResponse($commandConfig, $commandOptions);
         }
+
+        return CommandRunner::createRunCommandResponse($commandConfig, $commandOptions);
     }
 }
