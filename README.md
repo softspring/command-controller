@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/packagist/l/softspring/command-controller?style=flat-square)
 ![PHP Version](https://img.shields.io/packagist/dependency-v/softspring/command-controller/php?style=flat-square)
 ![Downloads](https://img.shields.io/packagist/dt/softspring/command-controller?style=flat-square)
-[![CI](https://img.shields.io/github/actions/workflow/status/softspring/command-controller/ci.yml?branch=5.4&style=flat-square&label=CI)](https://github.com/softspring/command-controller/actions/workflows/ci.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/softspring/command-controller/ci.yml?branch=6.0&style=flat-square&label=CI)](https://github.com/softspring/command-controller/actions/workflows/ci.yml)
 
 This library allows running commands from Symfony controllers.
 
