@@ -1,4 +1,4 @@
-# Command Controller component
+# Command Controller
 
 ![Latest Stable](https://img.shields.io/packagist/v/softspring/command-controller?label=stable&style=flat-square)
 ![Latest Unstable](https://img.shields.io/packagist/v/softspring/command-controller?label=unstable&style=flat-square&include_prereleases)
@@ -9,14 +9,25 @@
 
 This library allows running commands from Symfony controllers.
 
+## Armonic
+
+This package is part of [Armonic](https://softspring.es/en/armonic).
+
 ## Documentation
 
-- [1. Installation](docs/1_installation.md)
-- [2. Basic usage](docs/2_basic_usage.md)
-- [3. Command with arguments](docs/3_use_arguments.md)
-- [4. Command with options](docs/4_use_options.md)
-- [5. Output](docs/5_output.md)
-- [6. Security](docs/6_security.md)
+[Armonic Documentation](https://armonic.softspring.es/latest/components/command-controller)
+
+## Contributing
+
+Use the standard package commands before sending changes:
+
+```bash
+composer fix
+composer test
+composer test-bc
+```
+
+[Report issues](https://github.com/softspring/command-controller/issues) and [send Pull Requests](https://github.com/softspring/command-controller/pulls)
 
 ## License
 
