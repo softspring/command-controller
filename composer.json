@@ -1,6 +1,6 @@
 {
     "name": "softspring/command-controller",
-    "description": "This library allows running commands from Symfony controllers.",
+    "description": "Run Symfony console commands from HTTP controllers with streamed or buffered output",
     "license": "AGPL-3.0-or-later",
     "type": "library",
     "require": {
@@ -10,6 +10,7 @@
         "ergebnis/composer-normalize": "^2.50",
         "friendsofphp/php-cs-fixer": "^3.94",
         "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^12.5",
         "rector/rector": "^2.3",
         "symfony/console": "^6.4 || ^7.4 || ^8.0",
         "symfony/framework-bundle": "^6.4 || ^7.4 || ^8.0",
@@ -21,6 +22,11 @@
     "autoload": {
         "psr-4": {
             "Softspring\\Component\\CommandController\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Softspring\\Component\\CommandController\\Tests\\": "tests"
         }
     },
     "config": {
@@ -37,14 +43,15 @@
     "scripts": {
         "fix": [
             "vendor/bin/rector process src tests",
-            "vendor/bin/php-cs-fixer fix",
+            "vendor/bin/php-cs-fixer fix --sequential",
             "composer normalize"
         ],
         "run-tests": [
             "composer validate --strict --no-check-lock --ansi",
+            "XDEBUG_MODE=coverage vendor/bin/phpunit",
             "vendor/bin/rector process src tests --dry-run",
-            "vendor/bin/phpstan analyse src --level 5",
-            "vendor/bin/php-cs-fixer fix --dry-run --diff",
+            "vendor/bin/phpstan analyse src tests --level 5",
+            "vendor/bin/php-cs-fixer fix --dry-run --diff --sequential",
             "vendor/bin/yaml-lint .github/ -vvv --parse-tags"
         ],
         "test": [
