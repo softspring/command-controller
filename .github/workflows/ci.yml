@@ -11,6 +11,7 @@ permissions:
 
 env:
     XDEBUG_MODE: coverage
+    CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
 jobs:
     build:
@@ -63,7 +64,6 @@ jobs:
                 run: ./vendor/bin/yaml-lint .github/ -vvv --parse-tags
 
             -   name: Upload coverage to Codecov
-                if: ${{ secrets.CODECOV_TOKEN != '' }}
                 uses: codecov/codecov-action@v5
                 with:
                     token: ${{ secrets.CODECOV_TOKEN }}
