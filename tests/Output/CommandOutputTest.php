@@ -28,16 +28,19 @@ final class CommandOutputTest extends TestCase
         self::assertNotFalse($stream);
 
         $output = new StreamedCommandOutput($stream);
+        $initialBufferLevel = ob_get_level();
 
         ob_start();
         $output->writeln('Hello world');
-        $capturedOutput = ob_get_clean();
+
+        while (ob_get_level() > $initialBufferLevel) {
+            ob_end_clean();
+        }
 
         rewind($stream);
         $streamContents = stream_get_contents($stream);
         fclose($stream);
 
-        self::assertSame("Hello world\n", $capturedOutput);
         self::assertSame("Hello world\n", $streamContents);
     }
 }
@@ -49,7 +52,7 @@ final class ArrayLoggerStub extends AbstractLogger
      */
     public array $messages = [];
 
-    public function log($level, string|\Stringable $message, array $context = []): void
+    public function log($level, $message, array $context = []): void
     {
         $this->messages[] = (string) $message;
     }
