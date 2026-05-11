@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Softspring\Component\CommandController\Output;
 
 use Psr\Log\LoggerInterface;
