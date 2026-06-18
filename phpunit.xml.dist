@@ -5,8 +5,11 @@
          colors="true"
          bootstrap="vendor/autoload.php">
     <testsuites>
-        <testsuite name="Command Controller Test Suite">
-            <directory>tests</directory>
+        <testsuite name="unit">
+            <directory suffix="Test.php">tests/Unit</directory>
+        </testsuite>
+        <testsuite name="integration">
+            <directory suffix="Test.php">tests/Integration</directory>
         </testsuite>
     </testsuites>
 
