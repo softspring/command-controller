@@ -6,7 +6,7 @@
 [![PHP Version](https://img.shields.io/packagist/dependency-v/softspring/command-controller/php?style=flat-square)](https://github.com/softspring/command-controller/blob/6.0/composer.json)
 [![Downloads](https://img.shields.io/packagist/dt/softspring/command-controller?style=flat-square)](https://packagist.org/packages/softspring/command-controller)
 [![CI](https://img.shields.io/github/actions/workflow/status/softspring/command-controller/ci.yml?branch=6.0&style=flat-square&label=CI)](https://github.com/softspring/command-controller/actions/workflows/ci.yml)
-[![Coverage](https://img.shields.io/codecov/c/github/softspring/command-controller?branch=6.0&style=flat-square)](https://codecov.io/gh/softspring/command-controller)
+[![Coverage](https://img.shields.io/codecov/c/github/softspring/command-controller?branch=6.0&style=flat-square)](https://app.codecov.io/gh/softspring/command-controller/tree/6.0)
 
 This package lets Symfony applications expose selected console commands through HTTP controllers, with streamed or buffered output.
 
