@@ -12,7 +12,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\KernelInterface;
 
 class CommandRunner extends StreamedCommandRunner
 {
@@ -54,7 +53,7 @@ class CommandRunner extends StreamedCommandRunner
             $output = new BufferedOutput();
         }
 
-        /** @var KernelInterface $kernel */
+        /** @var \Symfony\Component\HttpKernel\KernelInterface $kernel */
         /** @phpstan-ignore-next-line  */
         $kernel = new Kernel($env, $debug);
         $application = new Application($kernel);

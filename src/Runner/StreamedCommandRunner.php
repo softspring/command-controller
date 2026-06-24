@@ -11,7 +11,6 @@ use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\HttpFoundation\StreamedResponse;
-use Symfony\Component\HttpKernel\KernelInterface;
 
 class StreamedCommandRunner
 {
@@ -80,7 +79,7 @@ class StreamedCommandRunner
             $output = new StreamedCommandOutput(fopen('php://stdout', 'w'));
         }
 
-        /** @var KernelInterface $kernel */
+        /** @var \Symfony\Component\HttpKernel\KernelInterface $kernel */
         /** @phpstan-ignore-next-line  */
         $kernel = new Kernel($env, $debug);
         $application = new Application($kernel);

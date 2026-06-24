@@ -8,6 +8,7 @@ use Softspring\Component\CommandController\Runner\StreamedCommandRunner;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class CommandController
 {
@@ -61,9 +62,19 @@ class CommandController
         $stream = (bool) $request->attributes->get('stream', true);
 
         if ($stream) {
-            return StreamedCommandRunner::createRunCommandStreamedResponse($commandConfig, $commandOptions)->send();
+            return $this->createRunCommandStreamedResponse($commandConfig, $commandOptions)->send();
         }
 
-        return CommandRunner::createRunCommandResponse($commandConfig, $commandOptions);
+        return $this->createRunCommandResponse($commandConfig, $commandOptions);
+    }
+
+    protected function createRunCommandStreamedResponse(array $command, array $options = []): StreamedResponse
+    {
+        return StreamedCommandRunner::createRunCommandStreamedResponse($command, $options);
+    }
+
+    protected function createRunCommandResponse(array $command, array $options = []): Response
+    {
+        return CommandRunner::createRunCommandResponse($command, $options);
     }
 }
