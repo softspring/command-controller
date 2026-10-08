@@ -62,8 +62,8 @@ class CommandController
 
         if ($stream) {
             return StreamedCommandRunner::createRunCommandStreamedResponse($commandConfig, $commandOptions)->send();
-        } else {
-            return CommandRunner::createRunCommandResponse($commandConfig, $commandOptions);
         }
+
+        return CommandRunner::createRunCommandResponse($commandConfig, $commandOptions);
     }
 }
